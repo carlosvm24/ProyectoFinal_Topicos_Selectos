@@ -1,5 +1,8 @@
 import cx_Oracle
-import kivy
+#import matplotlib
+#matplotlib.use("module://kivy.garden.matplotlib.backend_kivy")
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 from kivy.app import App
 #from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -10,6 +13,11 @@ from kivy.config import Config
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager,Screen
 
+
+
+#plt.plot([1, 23, 2, 10])
+#plt.ylabel('Prueba bd')
+#plt.savefig('pruebafig.png')
 
 class LoginScreen(BoxLayout,Screen):
     def __init__(self, **kwargs):
@@ -33,7 +41,47 @@ class LoginScreen(BoxLayout,Screen):
         if(self.username.text == 'Gumshoe'):
             print('Gumshoe login')
 
+        sm.current = 'menu'
+
+
+class MenuScreen(BoxLayout,Screen):
+    def __init__(self, **kwargs):
+        super(MenuScreen, self).__init__(**kwargs)
+        self.orientation='vertical'
+        self.padding = [50,20,50,20]
+        self.optionButton = Button(text="user options")
+        self.optionButton.bind(on_press = self.go_options)
+        self.add_widget(self.optionButton)
+        self.plotButton = Button(text = "plot")
+        self.plotButton.bind(on_press = self.start_plot)
+        self.add_widget(self.plotButton)
+    def start_plot(self,instance):
+        print('Plot')
+        sm.current = 'plot'
+    def go_options(self,instance):
+        print('Option')
         sm.current = 'options'
+
+
+class PlotScreen(BoxLayout,Screen):
+    def __init__(self, **kwargs):
+        super(PlotScreen, self).__init__(**kwargs)
+        self.orientation='vertical'
+        self.padding = [50,20,50,20]
+        self.plotButton = Button(text="Plot")
+        self.plotButton.bind(on_press = self.plotg)
+        self.add_widget(self.plotButton)
+        self.image = Image(source='pruebafig.png', size_hint_y=None, height=150)
+        self.add_widget(self.image)
+
+    def plotg(self, instance):
+        print('Prueba Graph')
+        plt.plot([1, 23, 2, 10])
+        plt.ylabel('Prueba bd')
+        plt.savefig('pruebafig.png')
+        self.image.canvas.ask_update()
+
+
 
 class OptionsScreen(BoxLayout,Screen):
     def __init__(self, **kwargs):
@@ -46,7 +94,7 @@ class OptionsScreen(BoxLayout,Screen):
         self.editButton = Button(text="Edit User")
         self.editButton.bind(on_press=self.option_editb)
         self.add_widget(self.editButton)
-        self.delButton = Button(text="Delet This")
+        self.delButton = Button(text="Delete User")
         self.delButton.bind(on_press=self.option_delb)
         self.add_widget(self.delButton)
     def option_createb(self,instance):
@@ -109,8 +157,7 @@ class DeleteUScreen(BoxLayout,Screen):
         super(DeleteUScreen, self).__init__(**kwargs)
         self.orientation = 'vertical'
         self.padding = [50, 20, 50, 20]
-        self.image = Image(source='kirbydelet.jpg', size_hint_y=None, height=100)
-        self.add_widget(self.image)
+        #self.add_widget(Fi)
         self.add_widget(Label(text='User Name'))
         self.username = TextInput(multiline=False, size_hint_y=None, height=30)
         self.add_widget(self.username)
@@ -128,6 +175,7 @@ class DeleteUScreen(BoxLayout,Screen):
 
 
 
+
 Config.set('graphics', 'width', '300')
 Config.set('graphics', 'height', '300')
 sm = ScreenManager()
@@ -136,6 +184,8 @@ sm.add_widget(OptionsScreen(name='options'))
 sm.add_widget(CreateUScreen(name='createu'))
 sm.add_widget(EditUScreen(name='editu'))
 sm.add_widget(DeleteUScreen(name='deleteu'))
+sm.add_widget(PlotScreen(name='plot'))
+sm.add_widget(MenuScreen(name='menu'))
 global con
 con = cx_Oracle.connect('acdp' + '/' + 'proyectodb' + '@' + 'localhost', mode=cx_Oracle.SYSDBA)
 print(con.version)
