@@ -12,4 +12,5 @@ Capacidades de usuario: Crear, Editar, Borrar
 Entregable 2:
 Propuesta para graficar 
 Mejoras a interfaz gráfica
-Instancia oracle
+Oracle
+Diseño base de datos
