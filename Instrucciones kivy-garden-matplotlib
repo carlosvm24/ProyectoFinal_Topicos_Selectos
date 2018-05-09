@@ -1,0 +1,5 @@
+Ingresar al command prompt
+Ingresar cd para ir directorio en el que se encuentra Python
+cd a Scripts
+Una vez que se está en ese directorio
+python garden install matplotlib
