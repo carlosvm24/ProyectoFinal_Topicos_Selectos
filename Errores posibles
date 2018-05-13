@@ -1,0 +1,5 @@
+Pantalla oscura al empezar el programa
+Esto se debe a que no se ha detectado el archivo de .kv
+La manera en que funciona Kivy busca un archivo de .kv con el nombre del clase App en minusculas
+Solución:
+Revisar el nombre del archivo .kv
