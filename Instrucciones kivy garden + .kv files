@@ -1,0 +1,10 @@
+Para kivy-garden-matplotlib
+Ingresar al command prompt
+Ingresar cd para ir directorio en el que se encuentra Python
+cd a Scripts
+Una vez que se está en ese directorio
+python garden install matplotlib
+
+Para activar los highlights de codigo .kv en Pycharm 
+Seguir las instrucciones de este link
+https://github.com/Zen-CODE/kivybits/tree/master/IDE
