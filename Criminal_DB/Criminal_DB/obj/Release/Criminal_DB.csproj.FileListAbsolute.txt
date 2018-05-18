@@ -1,0 +1,11 @@
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\bin\Release\Criminal_DB.exe.config
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\bin\Release\Criminal_DB.exe
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\bin\Release\Criminal_DB.pdb
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.csprojResolveAssemblyReference.cache
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.Login.resources
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.MainForm.resources
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.Properties.Resources.resources
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.csproj.GenerateResource.cache
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.csproj.CoreCompileInputs.cache
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.exe
+C:\Users\cv1039014\source\repos\Criminal_DB\Criminal_DB\obj\Release\Criminal_DB.pdb
