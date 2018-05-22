@@ -13,6 +13,7 @@ namespace Criminal_DB
 {
     public partial class MainForm : Form
     {
+        Form2 objForm;
         public MainForm()
         {
             InitializeComponent();
@@ -22,14 +23,17 @@ namespace Criminal_DB
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
-            Form2 objForm = new Form2();
-            objForm.TopLevel = false;
-            objForm.FormBorderStyle = FormBorderStyle.None;
-            splitContainer1.Panel2.Controls.Add(objForm);
-            objForm.Visible = true;
+            UserControl1 init = new UserControl1();
+            splitContainer1.Panel2.Controls.Add(init);
+            init.Visible = true;
+        }
 
-            //MainForm.Controls.Add(objForm);
-            
+        private void button9_Click(object sender, EventArgs e)
+        {
+            objForm = new Form2();
+            objForm.MdiParent = this.MdiParent;
+            objForm.Show();
+            //this.Enabled = false;
         }
     }
 }
