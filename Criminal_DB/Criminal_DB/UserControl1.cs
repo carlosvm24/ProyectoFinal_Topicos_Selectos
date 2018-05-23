@@ -16,20 +16,5 @@ namespace Criminal_DB
         {
             InitializeComponent();
         }
-
-        private void listView4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
