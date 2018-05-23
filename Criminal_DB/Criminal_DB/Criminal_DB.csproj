@@ -162,10 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.png.ico" />
-    <None Include="Resources\cal3.ico" />
     <None Include="Resources\cal.ico" />
-    <None Include="Resources\cal2.ico" />
-    <None Include="Resources\cal1.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

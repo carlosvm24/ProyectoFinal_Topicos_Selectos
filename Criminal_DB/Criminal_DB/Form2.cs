@@ -56,5 +56,30 @@ namespace Criminal_DB
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            monthCalendar1.Visible = true;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            if (e.Start.ToShortDateString().Equals(e.End.ToShortDateString()))
+            {
+                this.textBox14.Text = e.Start.ToShortDateString();
+                monthCalendar1.Visible = false;
+            }
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            if (e.Start.ToShortDateString().Equals(e.End.ToShortDateString()))
+            {
+                this.textBox14.Text = e.Start.ToShortDateString();
+                monthCalendar1.Visible = false;
+            }
+        }
     }
 }

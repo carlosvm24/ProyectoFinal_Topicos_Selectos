@@ -60,6 +60,12 @@ namespace Criminal_DB
             MainForm main_form = new MainForm();
             main_form.Show();
             this.Hide();
+            main_form.FormClosing += OnClose;
+        }
+
+        private void OnClose(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }
