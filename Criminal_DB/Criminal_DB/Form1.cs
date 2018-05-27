@@ -62,6 +62,73 @@ namespace Criminal_DB
             this.Hide();
             main_form.FormClosing += OnClose;
         }
+        
+        private void Create_new_user(string name, string rank)
+        {
+            string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
+            OracleConnection conn = new OracleConnection(oradb);
+            //System.Diagnostics.Debug.WriteLine(conn);
+            conn.Open();
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.ADD_USER";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.BindByName = true;
+
+            cmd.Parameters.Add("OFFICER_RANK", OracleDbType.Varchar2, rank, ParameterDirection.Input);
+            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+        private void Delete_user(string name)
+        {
+            string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
+            OracleConnection conn = new OracleConnection(oradb);
+            conn.Open();
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.DELETE_USER";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+        private void Edit_user(string cur_name, string name, string officer_rank)
+        {
+            string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
+            OracleConnection conn = new OracleConnection(oradb);
+            conn.Open();
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.EDIT_USER";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.BindByName = true;
+            cmd.Parameters.Add("CUR_NAME", OracleDbType.Varchar2, cur_name, ParameterDirection.Input);
+            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
+            cmd.Parameters.Add("OFFICER_RANK", OracleDbType.Varchar2, officer_rank, ParameterDirection.Input);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        private void Add_station(string station_name, string station_address,string station_zone)
+        {
+            string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
+            OracleConnection conn = new OracleConnection(oradb);
+            //System.Diagnostics.Debug.WriteLine(conn);
+            conn.Open();
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.ADD_STATION";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.BindByName = true;
+
+            cmd.Parameters.Add("STATION_NAME", OracleDbType.Varchar2, station_name, ParameterDirection.Input);
+            cmd.Parameters.Add("STATION_ADDRESS", OracleDbType.Varchar2, station_address, ParameterDirection.Input);
+            cmd.Parameters.Add("STATION_ZONE", OracleDbType.Varchar2, station_zone, ParameterDirection.Input);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
 
         private void OnClose(object sender, EventArgs e)
         {
