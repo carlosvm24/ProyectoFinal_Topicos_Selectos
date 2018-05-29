@@ -7,33 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 
 namespace Criminal_DB
 {
     public partial class MainForm : Form
     {
-        Form2 objForm;
+        //OracleConnection conn;
+        Form7 newpwd;
+        //public MainForm(OracleConnection connect)
         public MainForm()
         {
             InitializeComponent();
-            //Form2 objForm = new Form2();
-            //MainForm.Controls.Add(objForm);
+            //conn = connect;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
+            //UserControl1 init = new UserControl1(conn);
             UserControl1 init = new UserControl1();
             splitContainer1.Panel2.Controls.Add(init);
             init.Visible = true;
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button14_Click(object sender, EventArgs e)
         {
-            objForm = new Form2();
-            objForm.MdiParent = this.MdiParent;
-            objForm.Show();
-            //this.Enabled = false;
+            newpwd = new Form7();
+            newpwd.MdiParent = this.MdiParent;
+            newpwd.Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

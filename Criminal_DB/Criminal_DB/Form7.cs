@@ -17,9 +17,36 @@ namespace Criminal_DB
             InitializeComponent();
         }
 
-        private void Form7_Load(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            if (checkBox1.Checked)
+            {
+                textBox2.PasswordChar = '*';
+                Console.Write("Entra");
+            }
+            else
+            {
+                textBox2.PasswordChar = '\0';
+            }
+        }
 
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                textBox3.PasswordChar = '*';
+                Console.Write("Entra");
+            }
+            else
+            {
+                textBox3.PasswordChar = '\0';
+            }
+        }
+
+        private void Add_button_Click(object sender, EventArgs e)
+        {
+            Console.Write(textBox1.Text+" "+textBox2.Text+" "+textBox3.Text);
+            this.Close();
         }
     }
 }

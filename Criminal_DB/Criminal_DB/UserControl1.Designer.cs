@@ -28,30 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Carlos",
             "Comisionado",
             "TJPD",
             "Noroeste"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            "2",
+            "Dani",
+            "Cadete",
+            "TJPD",
+            "Noroeste"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "TJPD",
             "La revu",
             "Noroeste"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Carlos",
             "Comisionado",
             "TJPD",
             "Noroeste"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Carlos",
             "Comisionado",
             "TJPD",
             "Noroeste"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Carlos",
             "Comisionado",
@@ -59,17 +65,18 @@
             "Noroeste"}, 0);
             this.Control = new System.Windows.Forms.TabControl();
             this.Usuarios = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.User_Zone = new System.Windows.Forms.TextBox();
+            this.User_Edit = new System.Windows.Forms.CheckBox();
+            this.New_station = new System.Windows.Forms.TextBox();
+            this.New_rank = new System.Windows.Forms.TextBox();
+            this.New_username = new System.Windows.Forms.TextBox();
+            this.DeleteUser = new System.Windows.Forms.Button();
+            this.UpdateUser = new System.Windows.Forms.Button();
             this.AddUser = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.UserID = new System.Windows.Forms.TextBox();
+            this.User_Station = new System.Windows.Forms.TextBox();
+            this.User_Rank = new System.Windows.Forms.TextBox();
+            this.User_name = new System.Windows.Forms.TextBox();
+            this.User_ID = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
             this.Userlist = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -96,6 +103,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Denuncias = new System.Windows.Forms.TabPage();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -118,6 +127,11 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Case = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox33 = new System.Windows.Forms.TextBox();
             this.textBox34 = new System.Windows.Forms.TextBox();
@@ -135,6 +149,11 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CriminalR = new System.Windows.Forms.TabPage();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
@@ -149,18 +168,6 @@
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
             this.Control.SuspendLayout();
             this.Usuarios.SuspendLayout();
             this.Estaciones.SuspendLayout();
@@ -186,17 +193,18 @@
             // 
             // Usuarios
             // 
-            this.Usuarios.Controls.Add(this.checkBox1);
-            this.Usuarios.Controls.Add(this.textBox5);
-            this.Usuarios.Controls.Add(this.textBox6);
-            this.Usuarios.Controls.Add(this.textBox7);
-            this.Usuarios.Controls.Add(this.button2);
-            this.Usuarios.Controls.Add(this.button1);
+            this.Usuarios.Controls.Add(this.User_Zone);
+            this.Usuarios.Controls.Add(this.User_Edit);
+            this.Usuarios.Controls.Add(this.New_station);
+            this.Usuarios.Controls.Add(this.New_rank);
+            this.Usuarios.Controls.Add(this.New_username);
+            this.Usuarios.Controls.Add(this.DeleteUser);
+            this.Usuarios.Controls.Add(this.UpdateUser);
             this.Usuarios.Controls.Add(this.AddUser);
-            this.Usuarios.Controls.Add(this.textBox4);
-            this.Usuarios.Controls.Add(this.textBox3);
-            this.Usuarios.Controls.Add(this.textBox2);
-            this.Usuarios.Controls.Add(this.UserID);
+            this.Usuarios.Controls.Add(this.User_Station);
+            this.Usuarios.Controls.Add(this.User_Rank);
+            this.Usuarios.Controls.Add(this.User_name);
+            this.Usuarios.Controls.Add(this.User_ID);
             this.Usuarios.Controls.Add(this.Search);
             this.Usuarios.Controls.Add(this.Userlist);
             this.Usuarios.Location = new System.Drawing.Point(4, 22);
@@ -207,57 +215,71 @@
             this.Usuarios.Text = "Usuarios";
             this.Usuarios.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // User_Zone
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 417);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(69, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Edit User";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.User_Zone.Location = new System.Drawing.Point(374, 29);
+            this.User_Zone.Name = "User_Zone";
+            this.User_Zone.Size = new System.Drawing.Size(100, 20);
+            this.User_Zone.TabIndex = 18;
+            this.User_Zone.Text = "Zone";
             // 
-            // textBox5
+            // User_Edit
             // 
-            this.textBox5.Location = new System.Drawing.Point(364, 417);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 16;
-            this.textBox5.Text = "Station";
+            this.User_Edit.AutoSize = true;
+            this.User_Edit.Location = new System.Drawing.Point(25, 419);
+            this.User_Edit.Name = "User_Edit";
+            this.User_Edit.Size = new System.Drawing.Size(69, 17);
+            this.User_Edit.TabIndex = 17;
+            this.User_Edit.Text = "Edit User";
+            this.User_Edit.UseVisualStyleBackColor = true;
+            this.User_Edit.CheckedChanged += new System.EventHandler(this.User_Edit_CheckedChanged);
             // 
-            // textBox6
+            // New_station
             // 
-            this.textBox6.Location = new System.Drawing.Point(248, 417);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.Text = "Rank";
+            this.New_station.Enabled = false;
+            this.New_station.Location = new System.Drawing.Point(364, 417);
+            this.New_station.Name = "New_station";
+            this.New_station.Size = new System.Drawing.Size(100, 20);
+            this.New_station.TabIndex = 16;
+            this.New_station.Text = "Station";
             // 
-            // textBox7
+            // New_rank
             // 
-            this.textBox7.Location = new System.Drawing.Point(126, 417);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 14;
-            this.textBox7.Text = "Username";
+            this.New_rank.Enabled = false;
+            this.New_rank.Location = new System.Drawing.Point(248, 417);
+            this.New_rank.Name = "New_rank";
+            this.New_rank.Size = new System.Drawing.Size(100, 20);
+            this.New_rank.TabIndex = 15;
+            this.New_rank.Text = "Rank";
             // 
-            // button2
+            // New_username
             // 
-            this.button2.Location = new System.Drawing.Point(483, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.New_username.Enabled = false;
+            this.New_username.Location = new System.Drawing.Point(126, 417);
+            this.New_username.Name = "New_username";
+            this.New_username.Size = new System.Drawing.Size(100, 20);
+            this.New_username.TabIndex = 14;
+            this.New_username.Text = "Username";
             // 
-            // button1
+            // DeleteUser
             // 
-            this.button1.Location = new System.Drawing.Point(483, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.DeleteUser.Enabled = false;
+            this.DeleteUser.Location = new System.Drawing.Point(483, 444);
+            this.DeleteUser.Name = "DeleteUser";
+            this.DeleteUser.Size = new System.Drawing.Size(75, 23);
+            this.DeleteUser.TabIndex = 12;
+            this.DeleteUser.Text = "Delete";
+            this.DeleteUser.UseVisualStyleBackColor = true;
+            // 
+            // UpdateUser
+            // 
+            this.UpdateUser.Enabled = false;
+            this.UpdateUser.Location = new System.Drawing.Point(483, 415);
+            this.UpdateUser.Name = "UpdateUser";
+            this.UpdateUser.Size = new System.Drawing.Size(75, 23);
+            this.UpdateUser.TabIndex = 11;
+            this.UpdateUser.Text = "Update";
+            this.UpdateUser.UseVisualStyleBackColor = true;
             // 
             // AddUser
             // 
@@ -268,37 +290,37 @@
             this.AddUser.Text = "Add";
             this.AddUser.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // User_Station
             // 
-            this.textBox4.Location = new System.Drawing.Point(364, 29);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 5;
-            this.textBox4.Text = "Station";
+            this.User_Station.Location = new System.Drawing.Point(268, 29);
+            this.User_Station.Name = "User_Station";
+            this.User_Station.Size = new System.Drawing.Size(100, 20);
+            this.User_Station.TabIndex = 5;
+            this.User_Station.Text = "Station";
             // 
-            // textBox3
+            // User_Rank
             // 
-            this.textBox3.Location = new System.Drawing.Point(248, 29);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "Rank";
+            this.User_Rank.Location = new System.Drawing.Point(162, 29);
+            this.User_Rank.Name = "User_Rank";
+            this.User_Rank.Size = new System.Drawing.Size(100, 20);
+            this.User_Rank.TabIndex = 4;
+            this.User_Rank.Text = "Rank";
             // 
-            // textBox2
+            // User_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "Username";
+            this.User_name.Location = new System.Drawing.Point(56, 29);
+            this.User_name.Name = "User_name";
+            this.User_name.Size = new System.Drawing.Size(100, 20);
+            this.User_name.TabIndex = 3;
+            this.User_name.Text = "Username";
             // 
-            // UserID
+            // User_ID
             // 
-            this.UserID.Location = new System.Drawing.Point(6, 29);
-            this.UserID.Name = "UserID";
-            this.UserID.Size = new System.Drawing.Size(100, 20);
-            this.UserID.TabIndex = 2;
-            this.UserID.Text = "ID";
+            this.User_ID.Location = new System.Drawing.Point(6, 29);
+            this.User_ID.Name = "User_ID";
+            this.User_ID.Size = new System.Drawing.Size(44, 20);
+            this.User_ID.TabIndex = 2;
+            this.User_ID.Text = "ID";
             // 
             // Search
             // 
@@ -319,16 +341,18 @@
             this.Zone});
             this.Userlist.FullRowSelect = true;
             this.Userlist.GridLines = true;
-            listViewItem1.Checked = true;
-            listViewItem1.StateImageIndex = 1;
+            listViewItem7.Checked = true;
+            listViewItem7.StateImageIndex = 1;
             this.Userlist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem7,
+            listViewItem8});
             this.Userlist.Location = new System.Drawing.Point(2, 93);
             this.Userlist.Name = "Userlist";
             this.Userlist.Size = new System.Drawing.Size(587, 303);
             this.Userlist.TabIndex = 0;
             this.Userlist.UseCompatibleStateImageBehavior = false;
             this.Userlist.View = System.Windows.Forms.View.Details;
+            this.Userlist.SelectedIndexChanged += new System.EventHandler(this.Userlist_SelectedIndexChanged);
             // 
             // ID
             // 
@@ -490,10 +514,10 @@
             this.columnHeader5});
             this.Stationlist.FullRowSelect = true;
             this.Stationlist.GridLines = true;
-            listViewItem2.Checked = true;
-            listViewItem2.StateImageIndex = 1;
+            listViewItem9.Checked = true;
+            listViewItem9.StateImageIndex = 1;
             this.Stationlist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem9});
             this.Stationlist.Location = new System.Drawing.Point(47, 98);
             this.Stationlist.Name = "Stationlist";
             this.Stationlist.Size = new System.Drawing.Size(466, 303);
@@ -545,6 +569,22 @@
             this.Denuncias.TabIndex = 3;
             this.Denuncias.Text = "Denuncias";
             this.Denuncias.UseVisualStyleBackColor = true;
+            // 
+            // textBox24
+            // 
+            this.textBox24.Location = new System.Drawing.Point(356, 436);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(100, 20);
+            this.textBox24.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(306, 439);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "FIR ID: ";
             // 
             // textBox27
             // 
@@ -659,10 +699,10 @@
             this.columnHeader7});
             this.FIRlist.FullRowSelect = true;
             this.FIRlist.GridLines = true;
-            listViewItem3.Checked = true;
-            listViewItem3.StateImageIndex = 1;
+            listViewItem10.Checked = true;
+            listViewItem10.StateImageIndex = 1;
             this.FIRlist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem10});
             this.FIRlist.Location = new System.Drawing.Point(19, 87);
             this.FIRlist.Name = "FIRlist";
             this.FIRlist.Size = new System.Drawing.Size(556, 341);
@@ -733,6 +773,49 @@
             this.Case.TabIndex = 2;
             this.Case.Text = "Casos";
             this.Case.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(351, 432);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 62;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(294, 435);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Case ID: ";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(36, 430);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 60;
+            this.button7.Text = "Add";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(457, 466);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 59;
+            this.button8.Text = "View";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(457, 430);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 58;
+            this.button13.Text = "Update";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // textBox23
             // 
@@ -811,10 +894,10 @@
             this.columnHeader18});
             this.Caselist.FullRowSelect = true;
             this.Caselist.GridLines = true;
-            listViewItem4.Checked = true;
-            listViewItem4.StateImageIndex = 1;
+            listViewItem11.Checked = true;
+            listViewItem11.StateImageIndex = 1;
             this.Caselist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem11});
             this.Caselist.Location = new System.Drawing.Point(36, 88);
             this.Caselist.Name = "Caselist";
             this.Caselist.Size = new System.Drawing.Size(496, 325);
@@ -880,6 +963,49 @@
             this.CriminalR.TabIndex = 4;
             this.CriminalR.Text = "Registro de Criminales";
             this.CriminalR.UseVisualStyleBackColor = true;
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(344, 427);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(100, 20);
+            this.textBox30.TabIndex = 62;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(294, 430);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "CR ID: ";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(65, 425);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 60;
+            this.button12.Text = "Add";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(450, 461);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 59;
+            this.button15.Text = "View";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(450, 425);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 23);
+            this.button18.TabIndex = 58;
+            this.button18.Text = "Update";
+            this.button18.UseVisualStyleBackColor = true;
             // 
             // textBox21
             // 
@@ -949,10 +1075,10 @@
             this.columnHeader24});
             this.CRlist.FullRowSelect = true;
             this.CRlist.GridLines = true;
-            listViewItem5.Checked = true;
-            listViewItem5.StateImageIndex = 1;
+            listViewItem12.Checked = true;
+            listViewItem12.StateImageIndex = 1;
             this.CRlist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5});
+            listViewItem12});
             this.CRlist.Location = new System.Drawing.Point(65, 96);
             this.CRlist.Name = "CRlist";
             this.CRlist.Size = new System.Drawing.Size(460, 323);
@@ -987,108 +1113,6 @@
             this.columnHeader24.Text = "Status";
             this.columnHeader24.Width = 80;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(306, 439);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "FIR ID: ";
-            // 
-            // textBox24
-            // 
-            this.textBox24.Location = new System.Drawing.Point(356, 436);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(100, 20);
-            this.textBox24.TabIndex = 57;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(351, 432);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 62;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(294, 435);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 61;
-            this.label2.Text = "Case ID: ";
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(36, 430);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 60;
-            this.button7.Text = "Add";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(457, 466);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 59;
-            this.button8.Text = "View";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(457, 430);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 58;
-            this.button13.Text = "Update";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(344, 427);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(100, 20);
-            this.textBox30.TabIndex = 62;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(294, 430);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 61;
-            this.label3.Text = "CR ID: ";
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(65, 425);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 60;
-            this.button12.Text = "Add";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(450, 461);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 23);
-            this.button15.TabIndex = 59;
-            this.button15.Text = "View";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(450, 425);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(75, 23);
-            this.button18.TabIndex = 58;
-            this.button18.Text = "Update";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1118,21 +1142,21 @@
         private System.Windows.Forms.TabPage Usuarios;
         private System.Windows.Forms.TabPage Estaciones;
         private System.Windows.Forms.ListView Userlist;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox UserID;
+        private System.Windows.Forms.TextBox User_Station;
+        private System.Windows.Forms.TextBox User_Rank;
+        private System.Windows.Forms.TextBox User_name;
+        private System.Windows.Forms.TextBox User_ID;
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Username;
         private System.Windows.Forms.ColumnHeader Zone;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DeleteUser;
+        private System.Windows.Forms.Button UpdateUser;
         private System.Windows.Forms.Button AddUser;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.CheckBox User_Edit;
+        private System.Windows.Forms.TextBox New_station;
+        private System.Windows.Forms.TextBox New_rank;
+        private System.Windows.Forms.TextBox New_username;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
@@ -1218,5 +1242,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.TextBox User_Zone;
     }
 }
