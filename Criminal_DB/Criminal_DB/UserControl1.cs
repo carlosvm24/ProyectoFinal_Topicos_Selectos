@@ -13,17 +13,22 @@ namespace Criminal_DB
 {
     public partial class UserControl1 : UserControl
     {
-        //public OracleConnection conn;
-        //public UserControl1(OracleConnection connect)
-        public UserControl1()
+        int user_id = 0;
+        int level = 0;
+        Form3 newu;
+        OracleConnection conn;
+        public UserControl1(OracleConnection connect, int lvl)
+        //public UserControl1()
         {
             InitializeComponent();
-            //conn = connect;
+            conn = connect;
+            level = lvl;
             initScreen();
         }
 
         private void initScreen()
         {
+            Check_Users(0, "", "", "", "");
             /*User_ID.ForeColor = Color.LightGray;
             this.User_ID.Leave += new System.EventHandler(this.User_ID_Leave);
             this.User_ID.Enter += new System.EventHandler(this.User_ID_Enter);
@@ -45,17 +50,15 @@ namespace Criminal_DB
         {
             if (Userlist.SelectedItems.Count > 0)
             {
+                user_id = Convert.ToInt32(Userlist.SelectedItems[0].SubItems[0].Text);
                 New_username.Text = Userlist.SelectedItems[0].SubItems[1].Text;
-                New_rank.Text = Userlist.SelectedItems[0].SubItems[2].Text;
+                comboBox2.SelectedItem = Userlist.SelectedItems[0].SubItems[2].Text;
                 New_station.Text = Userlist.SelectedItems[0].SubItems[3].Text;
             }
         }
 
-        /*public List<Object> Check_Users(int userid, string username, string user_rank, string station_name, string stationzone)
+        public void Check_Users(int userid, string username, string user_rank, string station_name, string stationzone)
         {
-            List < Object > list = new List<Object>();
-            List<Object> data = new List<Object>();
-
             OracleCommand cmd = conn.CreateCommand();
             cmd.CommandText = "TJPD.SEARCH_USER";
             cmd.CommandType = CommandType.StoredProcedure;
@@ -96,71 +99,105 @@ namespace Criminal_DB
             cmd.Parameters.Add(dnt_cur);
 
             OracleDataReader dr = cmd.ExecuteReader();
+            Userlist.Items.Clear();
             while (dr.Read())
             {
                 Console.WriteLine(dr.GetDecimal(0) + " " + dr.GetString(1) + " " + dr.GetString(2) + " " + dr.GetString(3) + " " + dr.GetString(4));
-                data.Add(dr.GetDecimal(0));
-                data.Add(dr.GetString(1));
-                data.Add(dr.GetString(2));
-                data.Add(dr.GetString(3));
-                data.Add(dr.GetString(4));
-                list.Add(data);
-                data.Clear();
+                ListViewItem lvi = new ListViewItem(Convert.ToString(dr.GetDecimal(0)));
+                lvi.SubItems.Add(dr.GetString(1));
+                lvi.SubItems.Add(dr.GetString(2));
+                lvi.SubItems.Add(dr.GetString(3));
+                lvi.SubItems.Add(dr.GetString(4));
+
+                Userlist.Items.Add(lvi);
             }
-            return list;
         }
 
-        private void Create_new_user(string name, string rank)
-
-        {
-            OracleCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "TJPD.LVL1.ADD_USER";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.BindByName = true;
-
-            cmd.Parameters.Add("OFFICER_RANK", OracleDbType.Varchar2, rank, ParameterDirection.Input);
-
-            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
-
-            cmd.ExecuteNonQuery();
-        }
-
-        private void Delete_user(int id, string name)
+        private void Delete_user(int id)
         {
             OracleCommand cmd = conn.CreateCommand();
             cmd.CommandText = "TJPD.LVL1.DELETE_USER";
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("OFFICER_ID", OracleDbType.Decimal, id, ParameterDirection.Input);
-
-            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
+            cmd.Parameters.Add("OFID", OracleDbType.Decimal, id, ParameterDirection.Input);
 
             cmd.ExecuteNonQuery();
         }
 
-        private void Edit_user(string cur_name, string name, string officer_rank)
+        private void Edit_user(int id, string name, string officer_rank, string station_name)
         {
             OracleCommand cmd = conn.CreateCommand();
             cmd.CommandText = "TJPD.LVL1.EDIT_USER";
             cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("OFID", OracleDbType.Decimal, id, ParameterDirection.Input);
+
             cmd.BindByName = true;
+            cmd.Parameters.Add("ONAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
 
-            cmd.Parameters.Add("CUR_NAME", OracleDbType.Varchar2, cur_name, ParameterDirection.Input);
+            cmd.Parameters.Add("ORANK", OracleDbType.Varchar2, officer_rank, ParameterDirection.Input);
 
-            cmd.Parameters.Add("OFFICER_NAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
-
-            cmd.Parameters.Add("OFFICER_RANK", OracleDbType.Varchar2, officer_rank, ParameterDirection.Input);
+            cmd.Parameters.Add("SNAME", OracleDbType.Varchar2, station_name, ParameterDirection.Input);
 
             cmd.ExecuteNonQuery();
-        }*/
+        }
 
         private void User_Edit_CheckedChanged(object sender, EventArgs e)
         {
             New_username.Enabled = !New_username.Enabled;
-            New_rank.Enabled = !New_rank.Enabled;
+            comboBox2.Enabled = !comboBox2.Enabled;
             New_station.Enabled = !New_station.Enabled;
             UpdateUser.Enabled = !UpdateUser.Enabled;
             DeleteUser.Enabled = !DeleteUser.Enabled;
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Check_Users(Convert.ToInt32(User_ID.Text), User_name.Text, comboBox1.SelectedItem.ToString(), User_Station.Text, User_Zone.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("Los campos estan mal ingresados.", "Base de datos criminalistica", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FIRlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateUser_Click(object sender, EventArgs e)
+        {
+            Edit_user(user_id, New_username.Text, comboBox2.SelectedItem.ToString(), New_station.Text);
+            Check_Users(0, "", "", "", "");
+        }
+
+        private void DeleteUser_Click(object sender, EventArgs e)
+        {
+            Delete_user(user_id);
+            Check_Users(0, "", "", "", "");
+        }
+
+        private void AddUser_Click(object sender, EventArgs e)
+        {
+            newu = new Form3(conn);
+            newu.Show();
+            this.Enabled = false;
+            newu.FormClosing += adduclose;
+        }
+
+        private void adduclose(object sender, EventArgs e)
+        {
+            this.Enabled = true;
+            Check_Users(0, "", "", "", "");
         }
     }
 }

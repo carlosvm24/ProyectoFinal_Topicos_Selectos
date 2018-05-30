@@ -16,74 +16,101 @@ namespace Criminal_DB
 {
     public partial class Login : Form
     {
-        //string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
-        //OracleConnection conn;
+        string oradb = "Data Source=TJPD;User Id=TJPD;Password=Criminal2511;";
+        OracleConnection conn;
         public Login()
         {
             InitializeComponent();
-            //conn = new OracleConnection(oradb);
-            //conn.Open();
+            conn = new OracleConnection(oradb);
+            conn.Open();
             this.FormClosing += CloseApp;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 textBox2.PasswordChar = '*';
                 Console.Write("Entra");
             }
             else
             {
-                textBox2.PasswordChar =  '\0';
+                textBox2.PasswordChar = '\0';
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Console.WriteLine(textBox1.Text +" "+ textBox2.Text);
-            //int lvl = Check_Login(textBox1.Text, textBox2.Text);
-            //Console.WriteLine(lvl);
-            //MainForm main_form = new MainForm(conn);
-            MainForm main_form = new MainForm();
-            main_form.Show();
-            this.Hide();
-            main_form.FormClosing += OnClose;
+            List<object> list = Check_Login(textBox1.Text, textBox2.Text);
+            if (list.Count > 0)
+            {
+                MainForm main_form = new MainForm(conn, list);
+                main_form.Show();
+                this.Hide();
+                main_form.FormClosing += OnClose;
+            }
+            else
+            {
+                MessageBox.Show("Usuario no encontrado.", "Base de datos criminalistica", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
-        /*private int Check_Login(string username, string password)
+        private List<object> Check_Login(string username, string password)
         {
-            OracleCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "TJPD.CHECK_LOGIN";
-            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                List<object> data = new List<object>();
+                OracleCommand cmd1 = conn.CreateCommand();
+                cmd1.CommandText = "CHECK_LOGIN";
+                cmd1.CommandType = CommandType.StoredProcedure;
+                cmd1.BindByName = true;
 
-            OracleParameter name = new OracleParameter();
-            name.OracleDbType = OracleDbType.Varchar2;
-            name.Direction = ParameterDirection.Input;
-            name.Value = username;
-            cmd.Parameters.Add(name);
+                cmd1.Parameters.Add("ONAME", OracleDbType.Varchar2, username, ParameterDirection.Input);
+                cmd1.Parameters.Add("OPWD", OracleDbType.Varchar2, password, ParameterDirection.Input);
+                cmd1.Parameters.Add("DATAUSER", OracleDbType.RefCursor, ParameterDirection.Output);
+                cmd1.ExecuteNonQuery();
 
-            OracleParameter pwd = new OracleParameter();
-            pwd.OracleDbType = OracleDbType.Varchar2;
-            pwd.Direction = ParameterDirection.Input;
-            pwd.Value = password;
-            cmd.Parameters.Add(pwd);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-            Console.WriteLine(dr.GetDecimal(0));
-            int lvl =  Convert.ToInt32(dr.GetDecimal(0));
-            return lvl;
-        }*/
+                OracleDataReader dr1 = cmd1.ExecuteReader();
+                dr1.Read();
+                data.Add(dr1.GetDecimal(0));
+                data.Add(dr1.GetString(1));
+                data.Add(dr1.GetString(2));
+                data.Add(dr1.GetDecimal(4));
+                data.Add(dr1.GetString(9));
+                return data;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return new List<object>();
+            }
+        }
 
         private void OnClose(object sender, EventArgs e)
         {
             this.Show();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            checkBox1.Checked = true;
         }
 
         private void CloseApp(object sender, EventArgs e)
         {
-            //conn.Close();
+            conn.Close();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox2.PasswordChar = '*';
+                Console.Write("Entra");
+            }
+            else
+            {
+                textBox2.PasswordChar = '\0';
+            }
         }
     }
 }
