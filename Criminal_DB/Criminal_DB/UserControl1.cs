@@ -14,11 +14,12 @@ namespace Criminal_DB
     public partial class UserControl1 : UserControl
     {
         int user_id = 0;
+        int station_id = 0;
         int level = 0;
         Form3 newu;
+        Form4 news;
         OracleConnection conn;
         public UserControl1(OracleConnection connect, int lvl)
-        //public UserControl1()
         {
             InitializeComponent();
             conn = connect;
@@ -29,21 +30,7 @@ namespace Criminal_DB
         private void initScreen()
         {
             Check_Users(0, "", "", "", "");
-            /*User_ID.ForeColor = Color.LightGray;
-            this.User_ID.Leave += new System.EventHandler(this.User_ID_Leave);
-            this.User_ID.Enter += new System.EventHandler(this.User_ID_Enter);
-            User_name.ForeColor = Color.LightGray;
-            this.User_name.Leave += new System.EventHandler(this.User_name_Leave);
-            this.User_name.Enter += new System.EventHandler(this.User_name_Enter);
-            User_Rank.ForeColor = Color.LightGray;
-            this.User_Rank.Leave += new System.EventHandler(this.User_Rank_Leave);
-            this.User_Rank.Enter += new System.EventHandler(this.User_Rank_Enter);
-            User_Station.ForeColor = Color.LightGray;
-            this.User_Station.Leave += new System.EventHandler(this.User_Station_Leave);
-            this.User_Station.Enter += new System.EventHandler(this.User_Station_Enter);
-            User_Zone.ForeColor = Color.LightGray;
-            this.User_Zone.Leave += new System.EventHandler(this.User_Zone_Leave);
-            this.User_Zone.Enter += new System.EventHandler(this.User_Zone_Enter);*/
+            Check_Stations(0, "", "", "");
         }
 
         private void Userlist_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,16 +151,6 @@ namespace Criminal_DB
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FIRlist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void UpdateUser_Click(object sender, EventArgs e)
         {
             Edit_user(user_id, New_username.Text, comboBox2.SelectedItem.ToString(), New_station.Text);
@@ -198,6 +175,143 @@ namespace Criminal_DB
         {
             this.Enabled = true;
             Check_Users(0, "", "", "", "");
+        }
+
+        public void Check_Stations(int userid, string station_name, string station_adr, string stationzone)
+        {
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.SEARCH_STATION";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            OracleParameter id = new OracleParameter();
+            id.OracleDbType = OracleDbType.Decimal;
+            id.Direction = ParameterDirection.Input;
+            id.Value = userid;
+            cmd.Parameters.Add(id);
+
+            OracleParameter name = new OracleParameter();
+            name.OracleDbType = OracleDbType.Varchar2;
+            name.Direction = ParameterDirection.Input;
+            name.Value = station_name + "%";
+            cmd.Parameters.Add(name);
+
+            OracleParameter addr = new OracleParameter();
+            addr.OracleDbType = OracleDbType.Varchar2;
+            addr.Direction = ParameterDirection.Input;
+            addr.Value = station_adr + "%";
+            cmd.Parameters.Add(addr);
+
+            OracleParameter zone = new OracleParameter();
+            zone.OracleDbType = OracleDbType.Varchar2;
+            zone.Direction = ParameterDirection.Input;
+            zone.Value = stationzone + "%";
+            cmd.Parameters.Add(zone);
+
+            OracleParameter dnt_cur = new OracleParameter();
+            dnt_cur.OracleDbType = OracleDbType.RefCursor;
+            dnt_cur.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(dnt_cur);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+            Stationlist.Items.Clear();
+            while (dr.Read())
+            {
+                Console.WriteLine(dr.GetDecimal(0) + " " + dr.GetString(1) + " " + dr.GetString(2) + " " + dr.GetString(3));
+                ListViewItem lvi = new ListViewItem(Convert.ToString(dr.GetDecimal(0)));
+                lvi.SubItems.Add(dr.GetString(1));
+                lvi.SubItems.Add(dr.GetString(2));
+                lvi.SubItems.Add(dr.GetString(3));
+
+                Stationlist.Items.Add(lvi);
+            }
+        }
+
+        private void Delete_station(int id)
+        {
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.DELETE_STATION";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("STID", OracleDbType.Decimal, id, ParameterDirection.Input);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        private void Edit_station(int id, string name, string adr, string zone)
+        {
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "TJPD.LVL1.EDIT_STATION";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("STID", OracleDbType.Decimal, id, ParameterDirection.Input);
+
+            cmd.BindByName = true;
+            cmd.Parameters.Add("STNAME", OracleDbType.Varchar2, name, ParameterDirection.Input);
+
+            cmd.Parameters.Add("STADDR", OracleDbType.Varchar2, adr, ParameterDirection.Input);
+
+            cmd.Parameters.Add("STZONE", OracleDbType.Varchar2, zone, ParameterDirection.Input);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Check_Stations(Convert.ToInt32(StID.Text), StName.Text, StAdr.Text, StZone.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("Los campos estan mal ingresados.", "Base de datos criminalistica", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            NewStation.Enabled = !NewStation.Enabled;
+            NewAdr.Enabled = !NewAdr.Enabled;
+            NewZone.Enabled = !NewZone.Enabled;
+            UpdateSt.Enabled = !UpdateSt.Enabled;
+            DelSt.Enabled = !DelSt.Enabled;
+        }
+
+        private void Stationlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Stationlist.SelectedItems.Count > 0)
+            {
+                station_id = Convert.ToInt32(Stationlist.SelectedItems[0].SubItems[0].Text);
+                NewStation.Text = Stationlist.SelectedItems[0].SubItems[1].Text;
+                NewAdr.Text = Stationlist.SelectedItems[0].SubItems[2].Text;
+                NewZone.Text = Stationlist.SelectedItems[0].SubItems[3].Text;
+            }
+        }
+
+        private void UpdateSt_Click(object sender, EventArgs e)
+        {
+            Edit_station(station_id, NewStation.Text, NewAdr.Text, NewZone.Text);
+            Check_Stations(0, "", "", "");
+        }
+
+        private void DelSt_Click(object sender, EventArgs e)
+        {
+            Delete_station(station_id);
+            Check_Stations(0, "", "", "");
+        }
+
+        private void AddSt_Click(object sender, EventArgs e)
+        {
+            news = new Form4(conn);
+            news.Show();
+            this.Enabled = false;
+            news.FormClosing += addsclose;
+        }
+
+        private void addsclose(object sender, EventArgs e)
+        {
+            this.Enabled = true;
+            Check_Stations(0, "", "", "");
         }
     }
 }

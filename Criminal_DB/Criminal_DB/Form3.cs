@@ -20,11 +20,6 @@ namespace Criminal_DB
             conn = con;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Create_new_user(string name, string rank, string pwd, string station_name)
 
         {
