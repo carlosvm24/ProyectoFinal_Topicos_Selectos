@@ -15,6 +15,9 @@ namespace Criminal_DB
     {
         int user_id = 0;
         int station_id = 0;
+        int fir_id = 0;
+        int case_id = 0;
+        int cr_id = 0;
         int level = 0;
         Form3 newu;
         Form4 news;
@@ -24,13 +27,78 @@ namespace Criminal_DB
             InitializeComponent();
             conn = connect;
             level = lvl;
-            initScreen();
+            initScreen(lvl);
         }
 
-        private void initScreen()
+        private void initScreen(int nivel)
         {
             Check_Users(0, "", "", "", "");
             Check_Stations(0, "", "", "");
+            switch(nivel)
+            {
+                case 1:
+                    FIRlist.Enabled = false;
+                    Dsearch.Enabled = false;
+                    Dadd.Enabled = false;
+                    Dedit.Enabled = false;
+                    Caselist.Enabled = false;
+                    Csearch.Enabled = false;
+                    Cadd.Enabled = false;
+                    Cedit.Enabled = false;
+                    CRlist.Enabled = false;
+                    Rsearch.Enabled = false;
+                    Radd.Enabled = false;
+                    Redit.Enabled = false;
+                    break;
+                case 2:
+                    AddUser.Enabled = false;
+                    User_Edit.Enabled = false;
+                    Station_edit.Enabled = false;
+                    AddSt.Enabled = false;
+                    Caselist.Enabled = false;
+                    Csearch.Enabled = false;
+                    Cadd.Enabled = false;
+                    Cedit.Enabled = false;
+                    break;
+                case 3:
+                    AddUser.Enabled = false;
+                    User_Edit.Enabled = false;
+                    Station_edit.Enabled = false;
+                    AddSt.Enabled = false;
+                    Dadd.Enabled = false;
+                    Dedit.Enabled = false;
+                    Dview.Enabled = true;
+                    Cadd.Enabled = false;
+                    Cedit.Enabled = false;
+                    Cview.Enabled = true;
+                    Radd.Enabled = false;
+                    Redit.Enabled = false;
+                    Rview.Enabled = true;
+                    break;
+                case 4:
+                    AddUser.Enabled = false;
+                    User_Edit.Enabled = false;
+                    Station_edit.Enabled = false;
+                    AddSt.Enabled = false;
+                    Dadd.Enabled = false;
+                    Dedit.Enabled = false;
+                    Dview.Enabled = true;
+                    Radd.Enabled = false;
+                    Redit.Enabled = false;
+                    Rview.Enabled = true;
+                    break;
+                case 5:
+                    AddUser.Enabled = false;
+                    User_Edit.Enabled = false;
+                    Station_edit.Enabled = false;
+                    AddSt.Enabled = false;
+                    Dadd.Enabled = false;
+                    Dedit.Enabled = false;
+                    Dview.Enabled = true;
+                    break;
+                case 6:
+                    break;
+            }
         }
 
         private void Userlist_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,7 +107,7 @@ namespace Criminal_DB
             {
                 user_id = Convert.ToInt32(Userlist.SelectedItems[0].SubItems[0].Text);
                 New_username.Text = Userlist.SelectedItems[0].SubItems[1].Text;
-                comboBox2.SelectedItem = Userlist.SelectedItems[0].SubItems[2].Text;
+                New_rank.SelectedItem = Userlist.SelectedItems[0].SubItems[2].Text;
                 New_station.Text = Userlist.SelectedItems[0].SubItems[3].Text;
             }
         }
@@ -132,7 +200,7 @@ namespace Criminal_DB
         private void User_Edit_CheckedChanged(object sender, EventArgs e)
         {
             New_username.Enabled = !New_username.Enabled;
-            comboBox2.Enabled = !comboBox2.Enabled;
+            New_rank.Enabled = !New_rank.Enabled;
             New_station.Enabled = !New_station.Enabled;
             UpdateUser.Enabled = !UpdateUser.Enabled;
             DeleteUser.Enabled = !DeleteUser.Enabled;
@@ -142,7 +210,7 @@ namespace Criminal_DB
         {
             try
             {
-                Check_Users(Convert.ToInt32(User_ID.Text), User_name.Text, comboBox1.SelectedItem.ToString(), User_Station.Text, User_Zone.Text);
+                Check_Users(Convert.ToInt32(User_ID.Text), User_Name.Text, User_Rank.SelectedItem.ToString(), User_Station.Text, User_Zone.SelectedItem.ToString());
             }
             catch (Exception ex)
             {
@@ -153,7 +221,7 @@ namespace Criminal_DB
 
         private void UpdateUser_Click(object sender, EventArgs e)
         {
-            Edit_user(user_id, New_username.Text, comboBox2.SelectedItem.ToString(), New_station.Text);
+            Edit_user(user_id, New_username.Text, New_rank.SelectedItem.ToString(), New_station.Text);
             Check_Users(0, "", "", "", "");
         }
 
@@ -259,7 +327,7 @@ namespace Criminal_DB
         {
             try
             {
-                Check_Stations(Convert.ToInt32(StID.Text), StName.Text, StAdr.Text, StZone.Text);
+                Check_Stations(Convert.ToInt32(StID.Text), StName.Text, StAdr.Text, StZone.SelectedItem.ToString());
             }
             catch (Exception ex)
             {
@@ -284,13 +352,13 @@ namespace Criminal_DB
                 station_id = Convert.ToInt32(Stationlist.SelectedItems[0].SubItems[0].Text);
                 NewStation.Text = Stationlist.SelectedItems[0].SubItems[1].Text;
                 NewAdr.Text = Stationlist.SelectedItems[0].SubItems[2].Text;
-                NewZone.Text = Stationlist.SelectedItems[0].SubItems[3].Text;
+                NewZone.SelectedItem = Stationlist.SelectedItems[0].SubItems[3].Text;
             }
         }
 
         private void UpdateSt_Click(object sender, EventArgs e)
         {
-            Edit_station(station_id, NewStation.Text, NewAdr.Text, NewZone.Text);
+            Edit_station(station_id, NewStation.Text, NewAdr.Text, NewZone.SelectedItem.ToString());
             Check_Stations(0, "", "", "");
         }
 
@@ -312,6 +380,54 @@ namespace Criminal_DB
         {
             this.Enabled = true;
             Check_Stations(0, "", "", "");
+        }
+
+        private void Dedit_CheckedChanged(object sender, EventArgs e)
+        {
+            DFIRID.Enabled = !DFIRID.Enabled;
+            Dupdate.Enabled = !Dupdate.Enabled;
+            Dview.Enabled = !Dview.Enabled;
+        }
+
+        private void Cedit_CheckedChanged(object sender, EventArgs e)
+        {
+            CASEID.Enabled = !CASEID.Enabled;
+            Cupdate.Enabled = !Cupdate.Enabled;
+            Cview.Enabled = !Cview.Enabled;
+        }
+
+        private void Redit_CheckedChanged(object sender, EventArgs e)
+        {
+            REGID.Enabled = !REGID.Enabled;
+            Rupdate.Enabled = !Rupdate.Enabled;
+            Rview.Enabled = !Rview.Enabled;
+        }
+
+        private void FIRlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FIRlist.SelectedItems.Count > 0)
+            {
+                fir_id = Convert.ToInt32(FIRlist.SelectedItems[0].SubItems[0].Text);
+                DFIRID.Text = fir_id.ToString();
+            }
+        }
+
+        private void Caselist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Caselist.SelectedItems.Count > 0)
+            {
+                case_id = Convert.ToInt32(Caselist.SelectedItems[0].SubItems[0].Text);
+                CASEID.Text = case_id.ToString();
+            }
+        }
+
+        private void CRlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CRlist.SelectedItems.Count > 0)
+            {
+                cr_id = Convert.ToInt32(CRlist.SelectedItems[0].SubItems[0].Text);
+                REGID.Text = cr_id.ToString();
+            }
         }
     }
 }
